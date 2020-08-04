@@ -1,4 +1,4 @@
- /* flexible Background images   */
+
 body {
 	background-image:url('../images/bg_page_notes.gif');
 	font-family:Arial,sans-serif;
@@ -13,11 +13,14 @@ a {
 	margin:0 auto;
 	background:#fff5ea;
 }
+@media screen and (min-width:768px) {
 #main {
     width:93.75%;
     margin:0 auto 5.888888% auto;
     background: #fff url('../images/bg_main.png') repeat-y 62.888888% 0;
 }
+}
+
 
 header {
 	background-color:#a67947;

@@ -5,6 +5,36 @@
   <link rel="stylesheet" type="text/css" href="style/reset.css" />
   <link rel="stylesheet" type="text/css" href="style/contact.css" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <script type="text/javascript">
+    function html5_storage_support() {
+        //check to see if this browser support local storage: return true if so, false if not
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+            return false;
+        }
+    }
+    function save() {
+        if (html5_storage_support()) {
+            //get the user-entered values from the two text fields:
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+ 
+            //create two local-storage keys (name1, name2) and assign
+            //each the respective value from the text fields:
+            localStorage.setItem('name1',name1);
+            localStorage.setItem('name2',name2);
+        }
+    }
+ 
+    function set() {
+        if (html5_storage_support()) {
+            //set the value of each text field from the stored values:
+            document.getElementById('name1').value = localStorage.getItem('name1');
+            document.getElementById('name2').value = localStorage.getItem('name2');
+        }
+    }
+  </script>
 </head>
 
 <body>
@@ -45,7 +75,20 @@
 					<input type="submit">
 				</form>
 			
-		  </article>
+          </article>
+          <br> <hr>
+          <article>
+            <h2>Store Your Name using Storage feature</h2>
+            <label for="name1">Name 1</label><br>
+            <input type="text" name="name1" id="name1"><br>
+            <br>
+            <label for="name2">Name 2</label><br>
+            <input type="text" name="name2" id="name2"><br>
+            <br>
+            <button onclick="save()">Save</button>
+            <button onclick="set()">Update from Saved</button>
+          </article>
+          
 	  </div>
 	  <aside id="sidebar">
 		  <h3>Signup</h3>

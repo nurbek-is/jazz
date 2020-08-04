@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jazz Calendar - Local Live Jazz Music Events</title>
+  <link rel="stylesheet" type="text/css" href="style/reset.css" />
+  <link rel="stylesheet" type="text/css" href="style/performances.css" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<script>
+    if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
+}
+ 
+function locateSuccess(loc) {
+  var latitude = loc.coords.latitude;
+  var longitude = loc.coords.longitude;
+  alert('You are at ' + latitude + ', ' + longitude);
+}
+ 
+function locateFail(geoPositionError) {
+  switch (geoPositionError.code) {
+    case 0: // UNKNOWN_ERROR
+      alert('An unknown error occurred, sorry');
+      break;
+    case 1: // PERMISSION_DENIED
+      alert('Permission to use Geolocation was denied');
+      break;
+    case 2: // POSITION_UNAVAILABLE
+      alert('Couldn\'t find you...');
+      break;
+    case 3: // TIMEOUT
+      alert('The Geolocation request took too long and timed out');
+      break;
+    default:
+  }
+}
+</script>
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jazz Calendar - Local Live Jazz Music Events</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/jazzcalmap.css" />
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAgvRs8Ud9qJVcU5gL7TfWNXJABZ0JuXsw"></script>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+</head>
+
+<body>
+  <div id="container">
+    <div id="main">
+      <header>
+        <img src="images/logo.gif" alt="Jazz Calendar" />
+        <h3 id="tagline">Local jazz info</h3>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="performances.html">Performances</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div id="maincontent">
+          <article>
+			<h2>Local Gig Map</h2>
+			<p>Use the map below to find tonight's local gigs. For supported devices, your current location will show on the map.</p>
+			<div id="mapcontainer"></div>
+			
+          </article>
+      </div>
+      <aside id="sidebar">
+          <h3>Signup</h3>
+          <p>Become a member of Jazz Calendar now! <a href="#">Email us</a> to receive frequent notices on upcoming live shows.</p>
+      </aside>
+      <footer id="contactinfo">
+        <p>Jazz Calendar
+        <br />123 Fake Street, Sometown, USA | 555-123-4567</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

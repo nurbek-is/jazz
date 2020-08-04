@@ -14,9 +14,9 @@ a {
 	background:#fff5ea;
 }
 #main {
-	width:93.75%;
-	margin:0 auto 5.888888% auto;
-	background-color:#c0cbd0;
+    width:93.75%;
+    margin:0 auto 5.888888% auto;
+    background: #fff url('../images/bg_main.png') repeat-y 62.888888% 0;
 }
 
 header {

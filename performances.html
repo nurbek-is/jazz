@@ -9,30 +9,7 @@
     if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
 }
- 
-function locateSuccess(loc) {
-  var latitude = loc.coords.latitude;
-  var longitude = loc.coords.longitude;
-  alert('You are at ' + latitude + ', ' + longitude);
-}
- 
-function locateFail(geoPositionError) {
-  switch (geoPositionError.code) {
-    case 0: // UNKNOWN_ERROR
-      alert('An unknown error occurred, sorry');
-      break;
-    case 1: // PERMISSION_DENIED
-      alert('Permission to use Geolocation was denied');
-      break;
-    case 2: // POSITION_UNAVAILABLE
-      alert('Couldn\'t find you...');
-      break;
-    case 3: // TIMEOUT
-      alert('The Geolocation request took too long and timed out');
-      break;
-    default:
-  }
-}
+
 </script>
 </head>
 
@@ -66,7 +43,67 @@ function locateFail(geoPositionError) {
 			<h2>Local Gig Map</h2>
 			<p>Use the map below to find tonight's local gigs. For supported devices, your current location will show on the map.</p>
 			<div id="mapcontainer"></div>
-			
+			<script type="text/javascript">
+
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
+				}
+
+				function locateSuccess(loc) {
+					var latitude = loc.coords.latitude;
+					var longitude = loc.coords.longitude;
+					var coords = new google.maps.LatLng(latitude, longitude);
+
+					//create two fake gig locations, near to the user's current location:
+					var fakegig1_coords = new google.maps.LatLng(latitude - 0.001, longitude + 0.002);
+					var fakegig2_coords = new google.maps.LatLng(latitude - 0.003, longitude - 0.002);
+
+					//set options for the Google Map:
+					var options = {
+						zoom: 15,
+						center: coords,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+
+					};
+
+					//create the Google Map:
+					var map = new google.maps.Map(document.getElementById("mapcontainer"), options);
+
+					//create display text for the map popup window and the popup window
+					var infoWindowText = "<p>You are here. Nearby markers show tonight's gigs.</p>";
+					var infowindow = new google.maps.InfoWindow({
+					    content: infoWindowText
+					});
+
+					//create a marker for the user's current position
+					var marker = new google.maps.Marker({
+						position: coords,
+						map: map
+					});
+
+					//create markers for the two gigs
+					var fakegig1_marker = new google.maps.Marker({
+						position: fakegig1_coords,
+						map: map
+					});
+					var fakegig2_marker = new google.maps.Marker({
+						position: fakegig2_coords,
+						map: map
+					});
+
+					//enable clicking on the current-location marker
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.open(map,marker);
+					});
+
+					//popup the current-location window when the page loads
+					google.maps.event.trigger(marker, 'click');
+
+				}
+				function locateFail(geoPositionError) {
+					alert('An unknown error occurred, sorry');
+				}
+			</script>
           </article>
       </div>
       <aside id="sidebar">

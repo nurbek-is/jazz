@@ -148,3 +148,8 @@ nav ul li a {
 #contactinfo p {
 	color:#fff;
 }
+
+#main #maincontent iframe {
+    max-width:100%;
+    margin-bottom:4%;
+}

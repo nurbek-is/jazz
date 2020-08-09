@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Jazz Calendar</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="style/concertfinder.css">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript">
+		$(document).on('swiperight', "#bakerskeyboardlounge", function() {
+			$( "body" ).pagecontainer( "change", "#villagevanguard" );
+		});
+		$(document).on('swipeleft', "#bakerskeyboardlounge", function() {
+			$( "body" ).pagecontainer( "change", "#bluesalley" );
+		});
+		$(document).on('swiperight', "#bluesalley", function() {
+			$( "body" ).pagecontainer( "change", "#bakerskeyboardlounge" );
+		});
+		$(document).on('swipeleft', "#bluesalley", function() {
+			$( "body" ).pagecontainer( "change", "#elchapultepec" );
+		});
+		$(document).on('swiperight', "#elchapultepec", function() {
+			$( "body" ).pagecontainer( "change", "#bluesalley" );
+		});
+		$(document).on('swipeleft', "#elchapultepec", function() {
+			$( "body" ).pagecontainer( "change", "#villagevanguard" );
+		});
+		$(document).on('swiperight', "#villagevanguard", function() {
+			$( "body" ).pagecontainer( "change", "#elchapultepec" );
+		});
+		$(document).on('swipeleft', "#villagevanguard", function() {
+			$( "body" ).pagecontainer( "change", "#bakerskeyboardlounge" );
+		});
+	</script>
+	 
+</head> 
+<body> 
+<div data-role="page" id="home">
+
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="performances.html">Performances</a></li>
+			<li><a href="about.html">About</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="gameandmedia.html">Media</a></li>
+			<li><a href="concertfinder.html">Concerts</a></li>
+		</ul>
+		</nav>
+	<div data-role="header" class='navparentdiv' >
+		<h1>Jazz Calendar</h1>
+	</div>
+
+	<div class="ui-content" role="main">
+		<p>Use the filter below to find concerts near you:</p>
+		<form class="ui-filterable">
+			<input id="filter-input" data-type="search">
+		</form>
+		<ul data-role="listview" data-filter="true" data-input="#filter-input">
+			<li><a href="bakers-keyboard-lounge.html">Baker's Keyboard Lounge</a></li>
+			<li><a href="blues-alley.html">Blues Alley</a></li>
+			<li><a href="el-chapultepec.html">El Chapultepec</a></li>
+			<li><a href="village-vanguard.html">Village Vanguard</a></li>
+		</ul>
+	</div>
+
+</body>
+</html>

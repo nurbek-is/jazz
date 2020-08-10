@@ -1,0 +1,131 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Jazz Calendar</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="style/concertfinder.css">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript">
+		
+		
+		$(document).on('swiperight', ".swipeablepage", function() {
+			$( "body" ).pagecontainer( "change", $(this).attr('data-prev-page') );
+		});
+		
+		$(document).on('swipeleft', ".swipeablepage", function() {
+			$( "body" ).pagecontainer( "change", $(this).attr('data-next-page') );
+		});
+
+		$(window).on('orientationchange', function(event) {
+ 			setContent(event.orientation);
+		});
+
+		$(document).on('pagecreate', function() {
+			setContent(window.orientation);
+		}); 
+
+		function setContent(orien) {
+			// desktops will return undefined for window.orientation, so handle that:
+			if (orien != undefined) {
+				// on page load, window.orientation returns 0, 90, -90, 180, so translate to 'portrait' or 'landscape'
+				if (orien == '0' || orien == '180') {
+					orien = 'portrait';
+				} else if (orien == '90' || orien == '-90') {
+					orien = 'landscape';
+				}
+				
+				//hide extra content for portrait view
+				if (orien == 'portrait') {
+					$('p.info').hide();
+				} else if (orien == 'landscape') {
+					$('p.info').show();
+				}
+			}
+		}
+	</script>
+	 
+</head> 
+<body> 
+<div data-role="page" id="home">
+	<div data-role="header" class='navparentdiv' >
+		<h1>Jazz Calendar</h1>
+	</div>
+
+	<div class="ui-content" role="main">
+        <p>Use the filter below to find concerts near you:</p>
+        <form class="ui-filterable">
+            <input id="filter-input" data-type="search">
+        </form>
+        <ul data-role="listview" data-filter="true" data-input="#filter-input">
+            <li><a href="#bakerskeyboardlounge">Baker's Keyboard Lounge</a></li>
+            <li><a href="#bluesalley">Blues Alley</a></li>
+            <li><a href="#elchapultepec">El Chapultepec</a></li>
+            <li><a href="#villagevanguard">Village Vanguard</a></li>
+        </ul>
+    </div>
+ 
+</div>
+
+<div data-role="page" data-next-page="#bluesalley" data-prev-page="#villagevanguard" class="swipeablepage" id="bakerskeyboardlounge">
+
+	<div data-role="header">
+		<h1>Baker's Keyboard Lounge</h1>
+	</div>
+
+	<div class="ui-content" role="main">
+		<address>2050 Livernois Ave
+		<br>Detroit, Michigan 48221</address>
+		<img src="https://maps.googleapis.com/maps/api/staticmap?center=2050%20Livernois%20Ave,%20Detroit,%20MI&amp;zoom=14&amp;size=288x200&amp;markers=2050%20Livernois%20Ave,%20Detroit,%20MI&amp;sensor=false" height="200" width="288" />
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+	</div>
+
+</div>
+<div data-role="page" data-next-page="#elchapultepec" data-prev-page="#bakerskeyboardlounge" class="swipeablepage" id="bluesalley">
+
+	<div data-role="header">
+		<h1>Blues Alley</h1>
+	</div>
+
+	<div class="ui-content" role="main">
+		<address>1073 Wisconsin Ave. NW
+		<br>Washington, DC 20007</address>
+		<img src="https://maps.googleapis.com/maps/api/staticmap?center=1073%20Wisconsin%20Ave.%20NW%20Washington,%20DC&amp;zoom=14&amp;size=288x200&amp;markers=1073%20Wisconsin%20Ave.%20NW%20Washington,%20DC&amp;sensor=false" height="200" width="288" />
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+	</div>
+
+</div>
+
+<div data-role="page" data-next-page="#villagevanguard" data-prev-page="#bluesalley" class="swipeablepage" id="elchapultepec">
+
+	<div data-role="header">
+		<h1>El Chapultepec</h1>
+	</div>
+
+	<div class="ui-content" role="main">
+		<address>1962 Market St
+		<br>Denver, CO 80202</address>
+		<img src="https://maps.googleapis.com/maps/api/staticmap?center=1962%20Market%20St.%20Denver,%20CO&amp;zoom=14&amp;size=288x200&amp;markers=1962%20Market%20St.%20Denver,%20CO&amp;sensor=false" height="200" width="288" />
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+	</div>
+
+</div>
+
+<div data-role="page" data-next-page="#bakerskeyboardlounge" data-prev-page="#elchapultepec" class="swipeablepage" id="villagevanguard">
+
+	<div data-role="header">
+		<h1>Village Vanguard</h1>
+	</div>
+
+	<div class="ui-content" role="main">
+		<address>178 7th Avenue South, New York, NY 10014
+		<br></address>
+		<img src="https://maps.googleapis.com/maps/api/staticmap?center=178%207th%20Avenue%20South,%20New%20York,%20NY&amp;zoom=14&amp;size=288x200&amp;markers=178%207th%20Avenue%20South,%20New%20York,%20NY&amp;sensor=false" height="200" width="288" />
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+	</div>
+
+</div>
+
+</body>
+</html>

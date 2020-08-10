@@ -5,6 +5,8 @@
   <link rel="stylesheet" type="text/css" href="style/reset.css" />
   <link rel="stylesheet" type="text/css" href="style/performances.css" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 </head>
 
@@ -100,7 +102,33 @@
 					alert('An unknown error occurred, sorry');
 				}
 			</script>
-          </article>
+		  </article>
+		<div data-role="page">
+ 
+    <div data-role="header">
+        <h1>Jazz Calendar</h1>
+    </div>
+ 
+    <div data-role="page">
+ 
+		<div data-role="header">
+			<h1>Jazz Calendar</h1>
+		</div>
+	 
+		<div class="ui-content" role="main">
+			<p>Use the filter below to find concerts near you:</p>
+			<form class="ui-filterable">
+				<input id="filter-input" data-type="search">
+			</form>
+			<ul data-role="listview" data-filter="true" data-input="#filter-input">
+				<li><a href="bakers-keyboard-lounge.html">Baker's Keyboard Lounge</a></li>
+				<li><a href="blues-alley.html">Blues Alley</a></li>
+				<li><a href="el-chapultepec.html">El Chapultepec</a></li>
+				<li><a href="village-vanguard.html">Village Vanguard</a></li>
+			</ul>
+		</div>
+	 
+	</div>
       </div>
       <aside id="sidebar">
           <h3>Signup</h3>

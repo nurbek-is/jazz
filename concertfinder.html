@@ -9,6 +9,7 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript">
 		
+		
 		$(document).on('swiperight', ".swipeablepage", function() {
 			$( "body" ).pagecontainer( "change", $(this).attr('data-prev-page') );
 		});
@@ -17,22 +18,37 @@
 			$( "body" ).pagecontainer( "change", $(this).attr('data-next-page') );
 		});
 
+		$(window).on('orientationchange', function(event) {
+ 			setContent(event.orientation);
+		});
+
+		$(document).on('pagecreate', function() {
+			setContent(window.orientation);
+		}); 
+
+		function setContent(orien) {
+			// desktops will return undefined for window.orientation, so handle that:
+			if (orien != undefined) {
+				// on page load, window.orientation returns 0, 90, -90, 180, so translate to 'portrait' or 'landscape'
+				if (orien == '0' || orien == '180') {
+					orien = 'portrait';
+				} else if (orien == '90' || orien == '-90') {
+					orien = 'landscape';
+				}
+				
+				//hide extra content for portrait view
+				if (orien == 'portrait') {
+					$('p.info').hide();
+				} else if (orien == 'landscape') {
+					$('p.info').show();
+				}
+			}
+		}
 	</script>
 	 
 </head> 
 <body> 
 <div data-role="page" id="home">
-
-	<nav>
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="performances.html">Performances</a></li>
-			<li><a href="about.html">About</a></li>
-			<li><a href="contact.html">Contact</a></li>
-			<li><a href="gameandmedia.html">Media</a></li>
-			<li><a href="concertfinder.html">Concerts</a></li>
-		</ul>
-		</nav>
 	<div data-role="header" class='navparentdiv' >
 		<h1>Jazz Calendar</h1>
 	</div>

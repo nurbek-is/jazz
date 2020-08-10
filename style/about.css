@@ -60,14 +60,30 @@ nav ul li a {
 	margin-right:0.9%;
 }
 
+#mobilemenutoggle {
+	display:none;
+	text-decoration: none;
+	color:#fff;
+	font-size:22px;
+}
+
+#mobilemenutoggle span {
+	font-size:14px;
+}
+
 @media screen and (max-device-width: 480px) {
+	#mobilemenutoggle {
+		display:block;
+	}
+	nav ul {
+		display:none;
+	}
 	nav ul li a {
 		display:block;
 		padding:4% 0;
 		border-bottom:1px solid #000;
 	}
 }
-
 #main #maincontent {
 	width:54.888888%;
 	float:left;

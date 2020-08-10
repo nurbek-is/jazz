@@ -60,7 +60,24 @@ nav ul li a {
 	margin-right:0.9%;
 }
 
+#mobilemenutoggle {
+	display:none;
+	text-decoration: none;
+	color:#fff;
+	font-size:22px;
+}
+
+#mobilemenutoggle span {
+	font-size:14px;
+}
+
 @media screen and (max-device-width: 480px) {
+	#mobilemenutoggle {
+		display:block;
+	}
+	nav ul {
+		display:none;
+	}
 	nav ul li a {
 		display:block;
 		padding:4% 0;
@@ -152,4 +169,23 @@ nav ul li a {
 #main #maincontent iframe {
     max-width:100%;
     margin-bottom:4%;
+}
+
+#no {
+	display: none;
+}
+#note {
+	position:absolute;
+	top: 50px;
+	left: 50px;
+}
+#saxbell {
+	position:absolute;
+	top: 240px;
+	left: 200px;
+}
+#yes {
+	position:relative;
+	height:300px;
+	width:245px
 }

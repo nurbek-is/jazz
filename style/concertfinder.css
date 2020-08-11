@@ -1,0 +1,37 @@
+
+.navparentdiv {
+	background-color:#a67947;
+	padding:0 0 0 4%;
+}
+
+
+nav {
+	background-color:#2d5668;
+	padding:1.111111% 0 1.111111% 4%;
+}
+
+nav ul {
+	display:inline;
+}
+
+nav ul li {
+	display:inline;
+}
+
+nav ul li a {
+	color:#fff;
+	text-decoration:none;
+	margin-right:0.9%;
+}
+
+@media screen and (max-device-width: 480px) {
+	nav ul li a {
+		display:block;
+		padding:4% 0;
+		border-bottom:1px solid #000;
+	}
+}
+
+
+
+
